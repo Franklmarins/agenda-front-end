@@ -27,7 +27,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
       const { token } = response.data;
 
       api.defaults.headers.common.authorization = `Bearer ${token}`;
-      localStorage.setItem("your-todolist:token", token);
+      localStorage.setItem("token", token);
 
       navigate("dashboard");
     } catch (error) {
@@ -37,9 +37,10 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   const createUser = async (data: RegisterData) => {
     try {
-      await api.post("/clients", data);
+      const response = await api.post("/clients", data);
 
       navigate("/login");
+      return response.data;
     } catch (error) {
       console.error(error);
     }
