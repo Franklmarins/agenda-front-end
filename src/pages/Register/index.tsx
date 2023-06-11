@@ -47,7 +47,7 @@ export const Register = () => {
 
             <ButtonPrimaryStyles type="submit">Registrar</ButtonPrimaryStyles>
           </StyledForm>
-          <Link to="/login">
+          <Link to="/">
             <span>Voltar para a página de login</span>
           </Link>
         </div>

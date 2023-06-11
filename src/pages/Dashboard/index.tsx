@@ -36,7 +36,7 @@ const Dashboard = () => {
 
   const logOut = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   };
 
   const toggleModal = () => setIsOpenModal(!isOpenModal);
