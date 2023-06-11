@@ -5,6 +5,7 @@ export const ContactSchema = z.object({
   email: z.string().email("Deve ser um e-mail"),
   phone: z
     .string()
+    .min(9, "Deve conter no mínimo 9 digitos")
     .max(9, "Deve conter no máximo 9 digitos")
     .nonempty("Telefone obrigatório"),
 });

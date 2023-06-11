@@ -1,5 +1,5 @@
-import React from "react";
 import { Contact } from "../../pages/Dashboard";
+import { StyledContactCard } from "./style";
 
 interface ContactCardProps {
   contact: Contact;
@@ -7,10 +7,18 @@ interface ContactCardProps {
 
 export const ContactCard = ({ contact }: ContactCardProps) => {
   return (
-    <li>
-      <p>{contact.name}</p>
-      <p>{contact.phone}</p>
-      <p>{contact.email}</p>
-    </li>
+    <StyledContactCard>
+      <h2>
+        Nome: <span>{contact.name}</span>
+      </h2>
+
+      <h2>
+        Telefone: <span>{contact.phone}</span>
+      </h2>
+
+      <h2>
+        Email: <span>{contact.email}</span>
+      </h2>
+    </StyledContactCard>
   );
 };

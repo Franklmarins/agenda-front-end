@@ -6,14 +6,14 @@ export const StyledInput = styled.input`
   padding: 0 16px;
 
   border-radius: 4px;
-  border: 1px solid var(--grey-2);
+  border: 1px solid var(--color-contrast);
 
-  background: var(--grey-2);
+  background: var(--grey-0);
 
-  font-size: var(--font-size-2);
-  font-weight: var(--font-weight-2);
+  font-size: 14px;
+  font-weight: 400;
 
-  color: var(--grey-1);
+  color: var(--grey-3);
 
   :disabled {
     cursor: not-allowed;
@@ -21,16 +21,14 @@ export const StyledInput = styled.input`
 
   :focus {
     outline: none;
-    border: 1px solid var(--grey-0);
+    border: 1px solid var(--grey-1);
     ::placeholder {
-      color: var(--grey-0);
+      color: var(--grey-1);
     }
   }
 
   ::placeholder {
-    font-size: var(--font-size-2);
-    font-weight: var(--font-weight-2);
-
-    color: var(--grey-1);
+    font-size: 14px;
+    font-weight: 400;
   }
 `;

@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { ContactCard } from "../../components/ContactCard";
 import { ModalCreateContact } from "../../components/ModalCreateContact";
+import { Container } from "../../styles/Container";
+import { StyledDashboard } from "./style";
+import {
+  ButtonSecondaryStyles,
+  ButtonTerciaryStyles,
+} from "../../styles/Buttons";
+import { useNavigate } from "react-router-dom";
 
 export interface Contact {
   id: string;
@@ -15,6 +22,7 @@ export interface Contact {
 const Dashboard = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -26,29 +34,39 @@ const Dashboard = () => {
     })();
   }, []);
 
+  const logOut = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   const toggleModal = () => setIsOpenModal(!isOpenModal);
 
   return (
-    <main>
-      <div>
-        <button type="button" onClick={toggleModal}>
-          Adiconar Contato
-        </button>
-      </div>
+    <>
+      <Container>
+        <StyledDashboard>
+          <div>
+            <ButtonTerciaryStyles type="button" onClick={toggleModal}>
+              Adiconar Contato
+            </ButtonTerciaryStyles>
+            <ButtonSecondaryStyles onClick={logOut}>Sair</ButtonSecondaryStyles>
+          </div>
 
-      {isOpenModal && (
-        <ModalCreateContact
-          toggleModal={toggleModal}
-          setContacts={setContacts}
-        />
-      )}
+          {isOpenModal && (
+            <ModalCreateContact
+              toggleModal={toggleModal}
+              setContacts={setContacts}
+            />
+          )}
 
-      <ul>
-        {contacts.map((contact) => (
-          <ContactCard key={contact.id} contact={contact} />
-        ))}
-      </ul>
-    </main>
+          <ul>
+            {contacts.map((contact) => (
+              <ContactCard key={contact.id} contact={contact} />
+            ))}
+          </ul>
+        </StyledDashboard>
+      </Container>
+    </>
   );
 };
 
